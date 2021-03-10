@@ -114,10 +114,7 @@ def main():
     # exists now
     if not os.path.exists(PATH_TO_SUBMISSIONLINK):
         print("Ruh roh. Something went wrong with zip_assignment.py. Please contact the HTAs.")
-    else:
-        pass
-    
-    sys.exit()
+
 
     print("Writting into zip file...")
     zip_path = "dataviz-submission-1951A.zip"
