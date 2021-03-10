@@ -96,11 +96,15 @@ def main():
             sys.exit()
         # else, we will now create a tinyurl to the github pages of this submission
         correct_path = "https://cs1951a-s21-brown.github.io/{}/index.html".format(repo_name)
-        tinyurl = make_tiny(correct_path) # this link will not really be available until you
+        # this link will not really be available until you make public your Github Page
+        tinyurl = make_tiny(correct_path)
+        # also do a binary encoding of your repo name, just in case we cannot get ahold of
+        # your link
+        binary_enc = ' '.join(format(ord(x), 'b') for x in repo_name)
         # and then output it to PATH_TO_SUBMISSIONLINK
         with open(PATH_TO_SUBMISSIONLINK, "w") as lolfile:
-            lolfile.write(tinyurl)
-
+            lolfile.writelines([tinyurl + "\n\n", binary_enc + "\n"])
+    
     # alright. Now before we do anything, we'll commit and push
     print(" Committing your code to Github for Github Pages ... ")
     sequence = [ ['git', 'add', '.'] , ['git', 'commit', '-m', '.'] , ['git', 'push']]
