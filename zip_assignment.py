@@ -1,13 +1,8 @@
 """
 This file is to check if the folder that the student is trying to submit
 is of this exact structure (with exact naming):
-| code
-    | fdr_control.py
-    | fwer_control.py
-    | main.py
-| data
-    | <we don't care about what goes on here. we'll test it using our version of the data>
-| written_questions.md
+| index.html
+| <all the other stuff that you included with no name requirements>
 
 And then it will zip
 
