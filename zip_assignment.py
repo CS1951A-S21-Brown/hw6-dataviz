@@ -96,19 +96,25 @@ def main():
             sys.exit()
         # else, we will now create a tinyurl to the github pages of this submission
         correct_path = "https://cs1951a-s21-brown.github.io/{}/index.html".format(repo_name)
-        tinyurl = make_tiny(correct_path)
+        tinyurl = make_tiny(correct_path) # this link will not really be available until you
         # and then output it to PATH_TO_SUBMISSIONLINK
         with open(PATH_TO_SUBMISSIONLINK, "w") as lolfile:
             lolfile.write(tinyurl)
 
     # alright. Now before we do anything, we'll commit and push
+    print(" Committing your code to Github for Github Pages ... ")
     sequence = [ ['git', 'add', '.'] , ['git', 'commit', '-m', '.'] , ['git', 'push']]
-    for sq in sequence:
-        ret = subprocess.call(sq)
-        if ret != 0:
-            print("Error calling git add .", "ERROR CODE: ", ret)
-    
-    sys.exit()
+    try:
+        for sq in sequence:
+            ret = subprocess.call(sq)
+            if ret != 0:
+                print("Error calling git commands to push your code", "EXIT CODE: ", ret)
+                print("You will need to push your code to Github manually to be graded.")
+    except Exception as e:
+        print("Error calling git commands to push your code", "ERROR: ", e)
+        print("You will need to push your code to Github manually to be graded.")
+
+
     
     # Alright. Now right before submission, we will assert that the PATH_TO_SUBMISSIONLINK
     # exists now
