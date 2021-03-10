@@ -2,6 +2,8 @@
 This file is to check if the folder that the student is trying to submit
 is of this exact structure (with exact naming):
 | index.html
+| data
+    | *.csv
 | <all the other stuff that you included with no name requirements>
 
 And then it will zip
@@ -70,12 +72,14 @@ def main():
     failed = False
     # If the current directory doesn't contain this script, we'll exit and
     # tell the student to chdir to the right directory
-    if find('index.html', curdir) == None:
-        # We haven't found this file, and so we will print out a message and sys exit
-        print("We cannot find the file index.html in the directory that you are")
-        print("executing this script from. Please use command 'cd <path>' to change to the right")
-        print("directory that contains zip_assignment.py and execute this script again.")
-        sys.exit()
+    for must_have_file in ["index.html", "main.js", "main.css"]:
+        if find(must_have_file, curdir) == None:
+            # We haven't found this file, and so we will print out a message and sys exit
+            print("We cannot find the file {} in the directory that you are".format(must_have_file))
+            print("executing this script from. Please use command 'cd <path>' to change to the right")
+            print("directory that contains zip_assignment.py and execute this script again.")
+            sys.exit()
+
 
     # Alright. Get the name of the repository that they are using
     PATH_TO_SUBMISSIONLINK = "link_to_submission.txt"
