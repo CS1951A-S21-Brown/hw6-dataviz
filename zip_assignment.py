@@ -94,7 +94,7 @@ def main():
                     on Github. E.g. 'hw6-dataviz-ndo3'")
             sys.exit()
         # else, we will now create a tinyurl to the github pages of this submission
-        correct_path = "https://cs1951a-s21-brown.github.io/{}/index.html".format(repo_name)
+        correct_path = "https://cs1951a-s21-brown.github.io/{}/".format(repo_name)
         # this link will not really be available until you make public your Github Page
         tinyurl = make_tiny(correct_path)
         # also do a binary encoding of your repo name, just in case we cannot get ahold of
