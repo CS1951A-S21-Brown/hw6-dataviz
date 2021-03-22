@@ -107,15 +107,15 @@ def main():
     # alright. Now before we do anything, we'll commit and push
     print(" Committing your code to Github for Github Pages ... ")
     sequence = [ ['git', 'add', '.'] , ['git', 'commit', '-m', '.'] , ['git', 'push']]
-    # try:
-    #     for sq in sequence:
-    #         ret = subprocess.call(sq)
-    #         if ret != 0:
-    #             print("Error calling git commands to push your code", "EXIT CODE: ", ret)
-    #             print("You will need to push your code to Github manually to be graded.")
-    # except Exception as e:
-    #     print("Error calling git commands to push your code", "ERROR: ", e)
-    #     print("You will need to push your code to Github manually to be graded.")
+    try:
+        for sq in sequence:
+            ret = subprocess.call(sq)
+            if ret != 0:
+                print("Error calling git commands to push your code", "EXIT CODE: ", ret)
+                print("You will need to push your code to Github manually to be graded.")
+    except Exception as e:
+        print("Error calling git commands to push your code", "ERROR: ", e)
+        print("You will need to push your code to Github manually to be graded.")
 
 
     
