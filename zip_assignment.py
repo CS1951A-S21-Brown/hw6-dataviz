@@ -128,16 +128,15 @@ def main():
     print("Writting into zip file...")
     zip_path = "dataviz-submission-1951A.zip"
     with zipfile.ZipFile(zip_path, "w") as zip:
-        for root, dirs, files in os.walk(os.getcwd()):
-            # skipping the hidden files
-            for e in root.split("/")[1:]:
-                if e[0] == ".": break
+        for dirname, _, files in os.walk(os.getcwd()):
+            if '/.' not in dirname:
                 for f in files:
                     if f != zip_path and f != "zip_assignment.py" and not(".zip" in f):
-                        zip.write(os.path.join(root, f),\
-                                    os.path.relpath(os.path.join(root, f),\
+                        zip.write(os.path.relpath(os.path.join(dirname, f),\
                                         os.path.join(zip_path, '..'))\
                                     )
+
+
 
 
     print("Done! Wrote the submission zip to {}".format(zip_path))
