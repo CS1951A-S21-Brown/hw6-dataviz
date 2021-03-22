@@ -3,7 +3,7 @@ This file is to check if the folder that the student is trying to submit
 is of this exact structure (with exact naming):
 | index.html
 | data
-    | *.csv
+    | *
 | <all the other stuff that you included with no name requirements>
 
 And then it will zip
